@@ -1,0 +1,46 @@
+[client]
+port = 3306
+socket = /var/run/mysqld/mysqld.sock
+[mysql]
+no-auto-rehash
+auto-rehash
+default-character-set = utf8mb4
+[mysqld]
+sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+# 基本配置
+server-id = 1
+log-bin = /var/.data/log/mysql/mysql-bin
+socket  = /var/run/mysqld/mysqld.sock
+pid-file = /var/run/mysqld/mysqld.pid
+basedir = /usr
+datadir = /var/.data/db/mysql
+#log-error = /var/.data/log/mysql/error.log
+#bind-address = 127.0.0.1
+symbolic-links = 0
+port    = 3306
+# >务必配置此项，否则执行sql出错时，只能显示错误代码而不显示具体错误消息
+lc-messages-dir = /usr/share/mysql
+character-set-server = utf8mb4
+default-storage-engine = INNODB
+back_log = 300
+max_connections = 300
+max_connect_errors = 10
+query_cache_size = 0 #当数据不用于查询，可以设为0　例如主从复制模式
+table_open_cache = 256
+tmp_table_size   = 16M
+thread_cache_size = 4
+max_allowed_packet = 16M
+myisam_max_sort_file_size = 10G
+myisam_sort_buffer_size = 32M
+key_buffer_size = 16M
+read_buffer_size = 32K
+read_rnd_buffer_size = 256k
+sort_buffer_size = 256k
+
+# innodb
+innodb_additional_mem_pool_size = 3M
+innodb_flush_log_at_trx_commit = 1
+innodb_log_buffer_size = 8M
+innodb_buffer_pool_size = 128M
+innodb_log_file_size = 64M
+innodb_thread_concurrency = 8
